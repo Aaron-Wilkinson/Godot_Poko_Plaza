@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://dych2klshfgqc"]
+
+[ext_resource type="Texture2D" uid="uid://ctlsrjay7pq43" path="res://Art/City_Tileset.png" id="1_1dlm5"]
+[ext_resource type="Script" path="res://Scripts/item.gd" id="2_r5x2e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m6x2"]
+atlas = ExtResource("1_1dlm5")
+region = Rect2(32, 1648, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cddx"]
+atlas = ExtResource("1_1dlm5")
+region = Rect2(16, 1712, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkdjc"]
+atlas = ExtResource("1_1dlm5")
+region = Rect2(64, 744, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5jd3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m6x2")
+}],
+"loop": true,
+"name": &"book",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cddx")
+}],
+"loop": true,
+"name": &"coffee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkdjc")
+}],
+"loop": true,
+"name": &"lamp",
+"speed": 5.0
+}]
+
+[node name="item" type="AnimatedSprite2D"]
+position = Vector2(28, 21)
+sprite_frames = SubResource("SpriteFrames_f5jd3")
+animation = &"lamp"
+script = ExtResource("2_r5x2e")
+
+[node name="label" type="RichTextLabel" parent="."]
+offset_left = -1.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 37.0
+
+[node name="price" type="RichTextLabel" parent="."]
+offset_left = -30.0
+offset_top = 12.0
+offset_right = -9.0
+offset_bottom = 37.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 35.0
+offset_bottom = 41.0
+
+[node name="Button2" type="Button" parent="."]
+offset_left = -23.0
+offset_top = 25.0
+offset_bottom = 42.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
